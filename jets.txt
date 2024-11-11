@@ -1,5 +1,5 @@
-cargo:"AC-130":400:2450:130000000.0
-cargo:"AntonovAn-26":500:2200;95000.0
-fighter:"HarrierAV-8C":600:2500:9000000.0
-fighter:"EagleF-15":550:3200:20000000.0
-passenger:"Airbus-A380":540:3000:9500000.0
+Cargo:"AC-130":400:2450:130000000.0
+Cargo:"AntonovAn-26":500:2200:95000.0
+Fighter:"HarrierAV-8C":600:2500:9000000.0
+Fighter:"EagleF-15":550:3200:20000000.0
+Passenger:"Airbus-A380":540:3000:9500000.0

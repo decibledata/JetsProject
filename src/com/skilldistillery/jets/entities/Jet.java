@@ -14,17 +14,16 @@ public abstract class Jet {
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
+//		int travelTime = range / speed;
 	
 	}
 	public void fly() {
-		//override in each subclass
-		System.out.println(this.model + " flying"); //FixMe
+		System.out.println(this.model + " is flying " + speed + " MPH"); //FixMe
 	}
 	
-	public double getSpeedInMach( ) {
-		//TODO loop up how to convert MPH into Mach.
-		//no need to override
-		return 0.0;
+	public double getSpeedInMach() {
+		double speedOfSound = 0.00130332;
+		return speed / speedOfSound;
 	}
 
 	public String getModel() {

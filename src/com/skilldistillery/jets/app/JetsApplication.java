@@ -16,18 +16,18 @@ public class JetsApplication {
 	
 	private void launch() {
 		//TODO Loop;
+		boolean keepGoing = true; 
+		
+		
+		while(keepGoing) {
 		displayUserMenu();
-		//Displayusermenu()
-		//get choice from scanner
 		System.out.println("Enter a number to Load Commands: ");
 		int choice = sc.nextInt();
-		// act on choice
 		
 		switch (choice) {
 		
 		case 1: 
 			airField.listFleet();
-			displayUserMenu();
 			break;
 			
 		case 2:
@@ -47,11 +47,11 @@ public class JetsApplication {
 			break;
 			
 		case 6:
-			airField.dogFight();
+			airField.combatReady();
 			break;
 			
 		case 7:
-			
+			airField.addJets();
 			break;
 			
 		case 8:
@@ -63,11 +63,11 @@ public class JetsApplication {
 			
 		case 9:
 			System.out.println("Command List Closed.\nGoodbye");
+			keepGoing = false;
 			break;	
 			
 			
-			
-			
+		}
 		}
 	}
 	
