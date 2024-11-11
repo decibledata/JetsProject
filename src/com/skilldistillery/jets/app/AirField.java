@@ -71,29 +71,29 @@ public class AirField {
 	}
 
 	public Jet viewFastest() {
-		Jet fastest = fleet.get(0);
-		System.out.println("Fastest Jet: " + fastest);
+		Jet fastest = fleet.get(4);
 		for (Jet jet : fleet) {
 			if (jet.getSpeed() > fastest.getSpeed()) {
 				fastest = jet;
+				System.out.println(fastest);
 
 			}
 		}
 		return fastest;
+
 	}
 
 	public void viewLongestRange() {
-		int longestRange = 0;
-		for (int i = 0; i < fleet.size(); i++) {
-			int distance = fleet.get(i).getRange();
-			if (distance > longestRange) {
-				longestRange = distance;
-				System.out.println();
+		Jet longestRange = fleet.get(0);
+		for (Jet jet : fleet) {
+			if(jet.getRange() > longestRange.getRange());
+			longestRange = jet;
 
 			}
+		System.out.println(longestRange);
 		}
 
-	}
+	
 
 	public void loadCargo() {
 		for (Jet jet : fleet) {

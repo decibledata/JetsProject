@@ -6,9 +6,10 @@ public abstract class Jet {
 	private int speed;
 	private int range;
 	private double price;
-	
-	public Jet() {}
-	
+
+	public Jet() {
+	}
+
 	public Jet(String type, String model, int speed, int range, double price) {
 		super();
 		this.type = type;
@@ -17,12 +18,13 @@ public abstract class Jet {
 		this.range = range;
 		this.price = price;
 //		int travelTime = range / speed;
-	
+
 	}
+
 	public void fly() {
-		System.out.println(this.model + " is flying " + speed + " MPH"); //FixMe
+		System.out.println(this.model + " is flying " + speed + " MPH"); // FixMe
 	}
-	
+
 	public double getSpeedInMach() {
 		double speedOfSound = 0.00130332;
 		return speed / speedOfSound;
@@ -62,10 +64,10 @@ public abstract class Jet {
 
 	@Override
 	public String toString() {
-		System.out.println("|----------------------------------------------------------------------------------------------------|");
-		return "|Jets:[TYPE| = " + type  + " |MODEL| = " + model + " |SPEED| = " + speed + 
-				" |RANGE| = " + range + " |PRICE| = " + "$" + price + "]";
+		System.out.println(
+				"|----------------------------------------------------------------------------------------------------|");
+		return "|Jets:[TYPE| = " + type + " |MODEL| = " + model + " |SPEED| = " + speed + " |RANGE| = " + range
+				+ " |PRICE| = " + "$" + price + "]";
 	}
 
-		
 }
