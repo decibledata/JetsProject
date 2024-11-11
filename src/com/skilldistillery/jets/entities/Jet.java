@@ -1,6 +1,7 @@
 package com.skilldistillery.jets.entities;
 
 public abstract class Jet {
+	private String type;
 	private String model;
 	private int speed;
 	private int range;
@@ -8,8 +9,9 @@ public abstract class Jet {
 	
 	public Jet() {}
 	
-	public Jet(String model, int speed, int range, double price) {
+	public Jet(String type, String model, int speed, int range, double price) {
 		super();
+		this.type = type;
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
@@ -60,7 +62,9 @@ public abstract class Jet {
 
 	@Override
 	public String toString() {
-		return "Jets [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
+		System.out.println("|----------------------------------------------------------------------------------------------------|");
+		return "|Jets:[TYPE| = " + type  + " |MODEL| = " + model + " |SPEED| = " + speed + 
+				" |RANGE| = " + range + " |PRICE| = " + "$" + price + "]";
 	}
 
 		

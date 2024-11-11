@@ -10,6 +10,14 @@ public class JetsApplication {
 	public static void main(String[] args) {
 		sc = new Scanner(System.in);
 		System.out.println("Welcome to George's Air Field!");
+		System.out.println("         _\n"
+				+ "         -=\\`\\\n"
+				+ "     |\\ ____\\_\\__\n"
+				+ "   -=\\c`\"\"\"\"\"\"\" \"`)>---\n"
+				+ "      `~~~~~/ /~~`\n"
+				+ "        -==/ /\n"
+				+ "          '-'");
+		System.out.println("CHOOSE TO BEGIN");
 		JetsApplication app = new JetsApplication();
 		app.launch();
 	}
@@ -21,8 +29,9 @@ public class JetsApplication {
 		
 		while(keepGoing) {
 		displayUserMenu();
-		System.out.println("Enter a number to Load Commands: ");
+		System.out.println("\n[Enter a number to Load Commands] \n");
 		int choice = sc.nextInt();
+		System.out.println();
 		
 		switch (choice) {
 		
@@ -55,9 +64,6 @@ public class JetsApplication {
 			break;
 			
 		case 8:
-			airField.listFleet();
-			System.out.println("Choose a jet to remove");
-			int selection = sc.nextInt();
 			airField.removeJet();
 			break;
 			

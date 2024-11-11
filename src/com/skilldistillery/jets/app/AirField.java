@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.CargoCarrier;
 import com.skilldistillery.jets.entities.CargoJet;
@@ -26,29 +27,27 @@ public class AirField {
 
 				String[] jetsData = line.split(":");
 
-				String jetModel = jetsData[0];
-				String jetType = jetsData[1];
+				String jetType = jetsData[0];
+				String jetModel = jetsData[1];
 				int jetSpeed = Integer.parseInt(jetsData[2]);
 				int jetRange = Integer.parseInt(jetsData[3]);
 				double jetPrice = Double.parseDouble(jetsData[4]);
 
 				if (jetsData[0].equals("Cargo")) {
-					Jet jet = new CargoJet(jetType, jetSpeed, jetRange, jetPrice);
+					Jet jet = new CargoJet(jetType, jetModel, jetSpeed, jetRange, jetPrice);
 				fleet.add(jet);
 				}
 				else if (jetsData[0].equals("Fighter")) { 
-					Jet jet = new FighterJet(jetType, jetSpeed, jetRange, jetPrice); 
+					Jet jet = new FighterJet(jetType, jetModel, jetSpeed, jetRange, jetPrice); 
 				fleet.add(jet);	
 				}		
 				else if (jetsData[0].equals("Passenger")) { 
-					Jet jet = new PassengerJet(jetType, jetSpeed, jetRange, jetPrice);
+					Jet jet = new PassengerJet(jetType, jetModel, jetSpeed, jetRange, jetPrice);
 				fleet.add(jet);
 		
 			}
 		}
-		}catch(
-
-	Exception e)
+		}catch(Exception e)
 	{
 		System.err.println(e);
 		// TODO: handle exception
@@ -71,22 +70,25 @@ public class AirField {
 
 	}
 
-	public void viewFastest() {
-		Jet viewFastest = fleet.get(0);
+	public Jet viewFastest() {
+		Jet fastest = fleet.get(0);
+		System.out.println("Fastest Jet: " + fastest);
 		for (Jet jet : fleet) {
-			if (jet.getSpeed() > viewFastest.getSpeed()) {
-				viewFastest = jet;
+			if (jet.getSpeed() > fastest.getSpeed()) {
+				fastest = jet;
 
 			}
 		}
-
+		return fastest;
 	}
 
 	public void viewLongestRange() {
 		int longestRange = 0;
-		for (Jet jet : fleet) {
-			if ((int) jet.getRange() > longestRange) {
-				longestRange = jet.getRange();
+		for (int i = 0; i < fleet.size(); i++) {
+			int distance = fleet.get(i).getRange();
+			if (distance > longestRange) {
+				longestRange = distance;
+				System.out.println();
 
 			}
 		}
@@ -102,16 +104,65 @@ public class AirField {
 	}
 
 	public void combatReady() {
-
+		for(Jet jet : fleet) {
+			if(jet instanceof FighterJet) {
+				System.out.println(jet);
+				((FighterJet) jet).fight();
+				
+			}
+		}
 	}
-
+	
 	public void addJets() {
-
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("[TYPE JET TYPE]");
+		String jetType = sc.nextLine();
+		
+		System.out.println("[TYPE JET MODEL]");
+		String jetModel = sc.nextLine();
+		
+		System.out.println("[ENTER MAX SPEED]");
+		int jetSpeed = sc.nextInt();
+		
+		System.out.println("[ENTER FUEL RANGE]");
+		int jetRange = sc.nextInt();
+		
+		System.out.println("[ENTER PRICE]");
+		double jetPrice = sc.nextDouble();
+		
+		Jet jet = switch(jetType) {
+		case "Cargo"-> new CargoJet(jetType, jetModel, jetSpeed, jetRange, jetPrice);
+		case "Fighter" -> new FighterJet(jetType, jetModel, jetSpeed, jetRange, jetPrice);
+		case "Passenger"-> new PassengerJet(jetType, jetModel, jetSpeed, jetRange, jetPrice);
+		default -> null;
+		};
+		
+		if(jet != null) {
+			fleet.add(jet);
+			System.out.println("[NEW JET HAS BEEN ADDED TO THE FLEET]");
+		}
+		else {
+			System.out.println("INVALID JET TYPE");
+		}
 	}
 
+	
 	public void removeJet() {
-		fleet.remove(0);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("[CHOOSE A JET TO REMOVE FROM THE AIRFIELD]\n");
+		int choice = 1;
+		for (Jet jet : fleet) {
+			System.out.println(choice + ": " + jet);
+			choice++;
+		}
+		int selection = sc.nextInt();
+		System.out.println("JET " + selection + " REMOVED");
+		fleet.remove(selection - 1);
 
 	}
 
-}
+		
+	}
+
+	

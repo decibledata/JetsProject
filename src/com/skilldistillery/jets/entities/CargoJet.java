@@ -7,15 +7,15 @@ public class CargoJet extends Jet implements CargoCarrier {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CargoJet(String model, int speed, int range, double price) {
-		super(model, speed, range, price);
+	public CargoJet(String type, String model, int speed, int range, double price) {
+		super(type, model, speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void loadCargo() {
 		// TODO Auto-generated method stub
-		System.out.println("Cargo for " + this.getModel());
+		System.out.println("Loading cargo: " + this.getModel());
 		
 	}
 
